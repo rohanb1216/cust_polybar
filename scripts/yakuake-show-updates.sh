@@ -6,14 +6,14 @@
 /usr/bin/yakuake --im /usr/bin/fcitx --inputstyle onthespot &
 
 # gives Yakuake a couple seconds before sending dbus commands
-sleep 2
+sleep 1
 
 session_id=$(qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.addSession)
-qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.setSessionTitle $session_id "Updates"
+qdbus org.kde.yakuake /yakuake/tabs setTabTitle "$session_id" "Updates"
 wid=$(wmctrl -xl | grep -iF 'yakuake.yakuake' | head -n1 | cut -d' ' -f1)
 	if [[ -z "$wid" ]]; then
 		qdbus org.kde.yakuake /yakuake/window toggleWindowState > /dev/null
 	else
 		wmctrl -i -a $wid
     fi
-qdbus org.kde.yakuake /yakuake/sessions runCommandInTerminal $session_id "yay"
+qdbus org.kde.yakuake /yakuake/sessions runCommandInTerminal $session_id " update-helper"
