@@ -56,7 +56,7 @@ HIDE_WHEN_EMPTY = False
 #
 # Default: 0.0005
 #
-OUTPUT_DELAY = 0.0005
+OUTPUT_DELAY = 0.0001
 
 # Specify how many times cava can report "no sound" (all values are 0) before the script detects it
 #
